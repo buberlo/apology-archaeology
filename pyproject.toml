@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apoloarch"
+version = "0.1.0"
+description = "Apology Archaeology: extract, stratify, score, and exhibit apology events from chat, email, and text exports."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Apology Archaeology Maintainers" }
+]
+keywords = [
+  "apology",
+  "nlp",
+  "openai",
+  "cli",
+  "text-analysis",
+  "stratification"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Text Processing"
+]
+dependencies = [
+  "openai>=1.30.0,<2.0.0",
+  "python-dotenv>=1.0.1,<2.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4.0,<9.0.0",
+  "ruff>=0.4.0,<1.0.0"
+]
+
+[project.scripts]
+apoloarch = "apoloarch.cli:main"
+
+[project.urls]
+Homepage = "https://example.com/apoloarch"
+Repository = "https://example.com/apoloarch"
+Issues = "https://example.com/apoloarch/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["apoloarch*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+apoloarch = ["*.html", "*.json", "*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
